@@ -6,18 +6,18 @@ import QtQuick.Window 2.0
 BusyIndicator {
     id: indicator
 
-    property int lines: repeatr.model       //  条条数量
-    property real llength: 22               //  条条长途
-    property real lwidth: 5                 //  条条宽度
-    property real omin: 0.3                 //  最小透明度
-    property real omax: 1.0                 //  最大透明度
-    property color color: "black"           //  条条颜色
-    property real speed: 300                //  度/秒
-    property bool clock_wise: true          //  顺时针
+    property alias lines: repeatr.model      //  条条数量
+    property real lineLength: 22            //  条条长途
+    property real lineLwidth: 5             //  条条宽度
+    property real minOpacity: 0.3           //  最小透明度
+    property real maxOpacity: 1.0           //  最大透明度
+    property color color: "black"            //  条条颜色
+    property real speed: 360                 //  度/秒
+    property bool clockWise: true           //  顺时针
 
     contentItem: Item {
         id: content
-        property int cur: 0
+        property int rotatingIndex: 0
 
         anchors.fill: indicator
 
@@ -27,12 +27,12 @@ BusyIndicator {
             Rectangle {
                 x: content.width / 2 - width / 2
                 y: content.height / 2 - height / 2
-                width: indicator.lwidth
-                height: indicator.llength
+                width: indicator.lineLwidth
+                height: indicator.lineLength
                 radius: height / 2
                 color: indicator.color
-                opacity: indicator.omin + (indicator.omax-indicator.omin)/(repeatr.count-1)*
-                         ((7-index + content.cur )%repeatr.count)
+                opacity: indicator.minOpacity + (indicator.maxOpacity-indicator.minOpacity)/
+                         (repeatr.count-1)*((repeatr.count-1-index + content.rotatingIndex )%repeatr.count)
 
                 transform: [
                     Translate {
@@ -59,10 +59,10 @@ BusyIndicator {
             interval: 360/repeatr.count/indicator.speed * 1000
             repeat: true
             onTriggered: {
-                if(indicator.clock_wise){
-                    content.cur = (content.cur + 1) % repeatr.count
+                if(indicator.clockWise){
+                    content.rotatingIndex = (content.rotatingIndex + 1) % repeatr.count
                 }else{
-                    content.cur = (content.cur == 0) ? (repeatr.count-1) : (content.cur-1)
+                    content.rotatingIndex = (content.rotatingIndex == 0) ? (repeatr.count-1) : (content.rotatingIndex-1)
                 }
             }
         }

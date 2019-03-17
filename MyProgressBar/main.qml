@@ -1,14 +1,14 @@
-import QtQuick 2.12
+﻿import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.5
 
 MyWindow {
-    window_width: 600
-    window_height: 360
+    windowWidth: 600
+    windowHeight: 360
     visible: true
     title: "Hello World"
-    scale_factor: Screen.height/1080
+    scaleFactor: Screen.height/1080
     flags : Qt.Window | Qt.FramelessWindowHint
 
     Item{
@@ -26,8 +26,8 @@ MyWindow {
             minimum: 0
             maximum: 100
             progress: 0
-            foreground_color: "#0087FF"
-            background_color: "#E6E6E6"
+            foregroundColor: "#0087FF"
+            backgroundColor: "#E6E6E6"
         }
 
         Text{
@@ -42,9 +42,6 @@ MyWindow {
             font {
                 pixelSize: 32;
                 family: "Microsoft YaHei"
-            }
-            Component.onCompleted: {
-                console.debug(width)
             }
         }
     }

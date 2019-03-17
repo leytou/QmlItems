@@ -8,18 +8,17 @@ ProgressBar {
     property alias maximum: progress_bar.to
     // 注意：因使用了NumberAnimation, progress无法使用动态绑定
     property alias progress: progress_bar.value
-    property alias background_color: background.color
-    property alias foreground_color: foreground.color
-    property alias enable_transition: transition_animation.enabled
+    property alias backgroundColor: background.color
+    property alias foregroundColor: foreground.color
 
     from: 0
     to: 100
     value: 0
 
     function reset(){
-        enable_transition = false
+        transition_animation.enabled = false
         progress = 0
-        enable_transition = true
+        transition_animation.enabled = true
     }
 
     onVisibleChanged:{

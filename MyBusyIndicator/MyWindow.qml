@@ -5,12 +5,12 @@ import QtGraphicalEffects 1.0
 Window {
     id: root
 
-    property real window_width: 600             // content width
-    property real window_height: 360            // content height
-    property real scale_factor: 1               // content scale facotr
-    property alias window_color: window.color   // content background
+    property real windowWidth: 600             // content width
+    property real windowHeight: 360            // content height
+    property real scaleFactor: 1               // content scale facotr
+    property alias windowColor: window.color   // content background
     property alias radius: window.radius        // window radius
-    property alias drop_shadow: shadow          // shadow
+    property alias dropShadow: shadow          // shadow
 
     default property alias content: container.children
 
@@ -35,19 +35,19 @@ Window {
 
     Rectangle{
         id: window
-        width: window_width * scale_factor
-        height: window_height * scale_factor
+        width: windowWidth * scaleFactor
+        height: windowHeight * scaleFactor
         anchors.centerIn: parent
         anchors.horizontalCenterOffset: -shadow.horizontalOffset
         anchors.verticalCenterOffset: -shadow.verticalOffset
-        radius: 18 * scale_factor
+        radius: 18 * scaleFactor
 
         Item{
             id: container
-            width: window_width
-            height: window_height
+            width: windowWidth
+            height: windowHeight
             transformOrigin: "TopLeft"
-            scale: scale_factor
+            scale: scaleFactor
         }
     }
 

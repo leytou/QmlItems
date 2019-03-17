@@ -1,13 +1,13 @@
-import QtQuick 2.12
+﻿import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 
 MyWindow {
-    window_width: 600
-    window_height: 360
+    windowWidth: 600
+    windowHeight: 360
     visible: true
     title: "Hello World"
-    scale_factor: Screen.height/1080 //Scale according to screen resolution
+    scaleFactor: Screen.height/1080 //Scale according to screen resolution
     flags : Qt.Window | Qt.FramelessWindowHint
 
     ColumnLayout{
